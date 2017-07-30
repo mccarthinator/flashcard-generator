@@ -22,7 +22,7 @@ cards.push(card4);
 cards.push(card5);
 
 
-function studyCards() {
+function allCards() {
 
 	if(cardCount < cards.length) {
 
@@ -35,19 +35,19 @@ function studyCards() {
 
 					if((answer.question).toLowerCase() === cards[cardCount].back) {
 						console.log("well done");
-						//increase card count per loop
+						
 						cardCount ++
-						//continue recursion 
-						studyCards();
+						 
+						allCards();
 					} 
 					else {
-						//state back of card
+						
 						console.log("incorrect");
 						console.log("The answer is:  " + cards[cardCount].back);
-						//increase card count per loop
+						
 						cardCount ++
-						//continue recursion
-						studyCards();
+						
+						allCards();
 					}
 
 				});
@@ -57,4 +57,4 @@ function studyCards() {
 
 }
 
-studyCards();
+allCards();

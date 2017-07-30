@@ -12,14 +12,14 @@ function ClozeCard(text, cloze) {
 }
 
 ClozeCard.prototype.full = function() {
-	//show sentence with a blank
-	clozeDeleted = this.cloze;
+	
+	clozeRemoved = this.cloze;
 	clozeText = this.text;
 
-	//replace the incomplete sentence with the answer (cloze)
-	clozeText = clozeText.replace("...", clozeDeleted);
+	
+	clozeText = clozeText.replace("...", clozeRemoved);
 
-	//show answer
+
 	console.log(clozeText);
 
 }
@@ -38,7 +38,7 @@ cards.push(card3);
 cards.push(card4);
 cards.push(card5);
 
-function studyCards() {
+function allCards() {
 	//recursion loop 
 	if(cardCount < cards.length) {
 
@@ -49,22 +49,22 @@ function studyCards() {
 					}
 				]).then(function(answer) {
 
-					//if user's answer matches the cloze answer, log Correct, loop back through studyCards.
+					
 					if((answer.partial).toLowerCase() === cards[cardCount].cloze) {
 						console.log("Yep");
-						//increase card count per loop
+					
 						cardCount ++
-						//continue recursion 
-						studyCards();
+						
+						allCards();
 					} 
 					else {
-						//if user's answer does not match cloze answer, log Incorrect and show the full sentence.  
+						
 						console.log("Incorrect");
 						cards[cardCount].full();
-						//increase card count per loop
+						
 						cardCount ++
-						//continue recursion
-						studyCards();
+					
+						allCards();
 					}
 
 				});
@@ -74,4 +74,4 @@ function studyCards() {
 
 }
 
-studyCards();
+allCards();
